@@ -14,7 +14,6 @@ export const siteConfig = {
     m.meta_keyword_typescript(),
     m.meta_keyword_shadcn_ui(),
     m.meta_keyword_next_auth(),
-    m.meta_keyword_prisma(),
   ],
   url: () => env.APP_URL,
   googleSiteVerificationId: () => env.GOOGLE_SITE_VERIFICATION_ID || '',
