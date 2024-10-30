@@ -36,7 +36,7 @@ export const generateMetadata = (): Metadata => ({
     title: siteConfig.title(),
     description: siteConfig.description(),
     siteName: siteConfig.title(),
-    images: '/opengraph-image.png',
+    images: '/logo.png',
     type: 'website',
     locale: languageTag(),
   },
@@ -44,7 +44,7 @@ export const generateMetadata = (): Metadata => ({
     card: 'summary_large_image',
     title: siteConfig.title(),
     description: siteConfig.description(),
-    images: '/opengraph-image.png',
+    images: '/logo.png',
   },
 });
 
