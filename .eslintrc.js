@@ -25,6 +25,7 @@ module.exports = {
         groups: [
           ['^.+\\.s?css$'],
           [
+            // eslint-disable-next-line @typescript-eslint/no-require-imports
             `^(${require('module').builtinModules.join('|')})(/|$)`,
             '^react',
             '^@?\\w',

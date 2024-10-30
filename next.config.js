@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { paraglide } = require('@inlang/paraglide-next/plugin');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
