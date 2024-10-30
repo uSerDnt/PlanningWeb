@@ -12,9 +12,6 @@ export const useLogin = () => {
       const response = await client.api.auth.login['$post']({ json });
       return await response.json();
     },
-    onError: (error) => {
-      console.error('error', error);
-    },
   });
 
   return mutation;
