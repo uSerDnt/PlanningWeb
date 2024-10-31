@@ -7,6 +7,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { z } from 'zod';
 
+import { useRegister } from '../api/use-register';
+import { registerSchema } from '../schema';
+
 import { DottedSeparator } from '@/components/dotted-separator';
 import { Button } from '@/components/ui/button';
 import {
@@ -25,24 +28,21 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 
-const formSchema = z.object({
-  name: z.string().trim().min(1, 'Name is required'),
-  email: z.string().email(),
-  password: z.string().min(8, 'Password must be at least 8 characters'),
-});
-
 export const SignUpCard = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
+  const { mutate } = useRegister();
+  const form = useForm<z.infer<typeof registerSchema>>({
     defaultValues: {
       name: '',
       email: '',
       password: '',
     },
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(registerSchema),
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log('values', values);
+  const onSubmit = (values: z.infer<typeof registerSchema>) => {
+    mutate({
+      json: values,
+    });
   };
 
   return (

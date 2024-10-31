@@ -68,6 +68,9 @@ importers:
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      node-appwrite:
+        specifier: 14.0.0
+        version: 14.0.0
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -86,6 +89,9 @@ importers:
       recharts:
         specifier: ^2.13.0
         version: 2.13.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      server-only:
+        specifier: 0.0.1
+        version: 0.0.1
       stripe:
         specifier: ^16.12.0
         version: 16.12.0
@@ -3041,6 +3047,12 @@ packages:
       sass:
         optional: true
 
+  node-appwrite@14.0.0:
+    resolution: {integrity: sha512-pPynEAmhep1rNHpv2UqsZfM7FbtDX7y+nRRZS/IP5CMDznMu8PBqzFD2WbbQIvVCv3MEDRY5xpXbPfyxbysCPQ==}
+
+  node-fetch-native-with-agent@1.7.2:
+    resolution: {integrity: sha512-5MaOOCuJEvcckoz7/tjdx1M6OusOY6Xc5f459IaruGStWnKzlI1qpNgaAwmn4LmFYcsSlj+jBMk84wmmRxfk5g==}
+
   node-int64@0.4.0:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
 
@@ -3555,6 +3567,9 @@ packages:
     resolution: {integrity: sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==}
     engines: {node: '>=10'}
     hasBin: true
+
+  server-only@0.0.1:
+    resolution: {integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==}
 
   set-function-length@1.2.2:
     resolution: {integrity: sha512-pgRc4hJ4/sNjWCSS9AmnS40x3bNMDTknHgL5UaMBTMyJnU90EgWh1Rz+MC9eFu4BuN/UwZjKQuY/1v3rM7HMfg==}
@@ -7433,6 +7448,12 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
+  node-appwrite@14.0.0:
+    dependencies:
+      node-fetch-native-with-agent: 1.7.2
+
+  node-fetch-native-with-agent@1.7.2: {}
+
   node-int64@0.4.0: {}
 
   node-releases@2.0.18: {}
@@ -7924,6 +7945,8 @@ snapshots:
   semver@6.3.1: {}
 
   semver@7.6.3: {}
+
+  server-only@0.0.1: {}
 
   set-function-length@1.2.2:
     dependencies:
