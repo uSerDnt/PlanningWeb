@@ -1,35 +1,15 @@
-'use client';
+import { redirect } from 'next/navigation';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import UserButton from '@/features/auth/components/user-button';
+import { getCurrent } from '@/features/auth/server/actions';
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { useCurrent } from '@/features/auth/api/use-current';
-import { useLogout } from '@/features/auth/api/use-logout';
-
-export default function Home() {
-  const { data, isLoading } = useCurrent();
-
-  const { mutate } = useLogout();
-
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!data && !isLoading) {
-      router.push('/sign-in');
-    }
-  }, [data]);
+export default async function Home() {
+  const user = await getCurrent();
+  if (!user) redirect('/sign-in');
 
   return (
-    <div className="space-x-2 space-y-2 p-2">
-      <Button onClick={() => mutate()}>Log out</Button>
-      <Button variant="destructive">destructive button</Button>
-      <Button variant={'secondary'}>secondary button</Button>
-      <Button variant={'ghost'}>ghost button</Button>
-      <Button variant={'muted'}>muted button</Button>
-      <Button variant={'teritary'}>teritary button</Button>
-      <Input placeholder="take me!" />
+    <div>
+      <UserButton />
     </div>
   );
 }
