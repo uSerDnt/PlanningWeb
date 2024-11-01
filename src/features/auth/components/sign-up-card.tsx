@@ -29,7 +29,7 @@ import {
 import { Input } from '@/components/ui/input';
 
 export const SignUpCard = () => {
-  const { mutate } = useRegister();
+  const { mutate, isPending } = useRegister();
   const form = useForm<z.infer<typeof registerSchema>>({
     defaultValues: {
       name: '',
@@ -76,6 +76,7 @@ export const SignUpCard = () => {
                       {...field}
                       type="text"
                       placeholder="Enter your name!"
+                      disabled={isPending}
                     />
                   </FormControl>
                   <FormMessage />
@@ -92,6 +93,7 @@ export const SignUpCard = () => {
                       {...field}
                       type="email"
                       placeholder="Enter your email!"
+                      disabled={isPending}
                     />
                   </FormControl>
                   <FormMessage />
@@ -109,6 +111,7 @@ export const SignUpCard = () => {
                       {...field}
                       type="password"
                       placeholder="Enter your password!"
+                      disabled={isPending}
                     />
                   </FormControl>
                   <FormMessage />
@@ -125,11 +128,21 @@ export const SignUpCard = () => {
         <DottedSeparator />
       </div>
       <CardContent className="flex flex-col gap-y-4 p-7">
-        <Button size={'lg'} className="w-full" variant={'secondary'}>
+        <Button
+          disabled={isPending}
+          size={'lg'}
+          className="w-full"
+          variant={'secondary'}
+        >
           <FcGoogle className="mr-2 size-5" />
           Login with google
         </Button>
-        <Button size={'lg'} className="w-full" variant={'secondary'}>
+        <Button
+          disabled={isPending}
+          size={'lg'}
+          className="w-full"
+          variant={'secondary'}
+        >
           <FaGithub className="mr-2 size-5" />
           Login with Github
         </Button>

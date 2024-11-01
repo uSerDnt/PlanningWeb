@@ -23,7 +23,7 @@ import {
 import { Input } from '@/components/ui/input';
 
 export const SignInCard = () => {
-  const { mutate } = useLogin();
+  const { mutate, isPending } = useLogin();
 
   const form = useForm<z.infer<typeof loginSchema>>({
     defaultValues: {
@@ -60,6 +60,7 @@ export const SignInCard = () => {
                       {...field}
                       type="email"
                       placeholder="Enter your email!"
+                      disabled={isPending}
                     />
                   </FormControl>
                   <FormMessage />
@@ -77,13 +78,14 @@ export const SignInCard = () => {
                       {...field}
                       type="password"
                       placeholder="Enter your password!"
+                      disabled={isPending}
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button className="w-full" size={'lg'}>
+            <Button className="w-full" size={'lg'} disabled={isPending}>
               Login
             </Button>
           </form>
@@ -93,11 +95,21 @@ export const SignInCard = () => {
         <DottedSeparator />
       </div>
       <CardContent className="flex flex-col gap-y-4 p-7">
-        <Button size={'lg'} className="w-full" variant={'secondary'}>
+        <Button
+          disabled={isPending}
+          size={'lg'}
+          className="w-full"
+          variant={'secondary'}
+        >
           <FcGoogle className="mr-2 size-5" />
           Login with google
         </Button>
-        <Button size={'lg'} className="w-full" variant={'secondary'}>
+        <Button
+          disabled={isPending}
+          size={'lg'}
+          className="w-full"
+          variant={'secondary'}
+        >
           <FaGithub className="mr-2 size-5" />
           Login with Github
         </Button>
