@@ -8,7 +8,7 @@ export default async function Home() {
   if (!user) redirect('/sign-in');
 
   return (
-    <div className="w-full bg-neutral-500">
+    <div className="w-full ">
       <CreateWorkspaceForm />
     </div>
   );
