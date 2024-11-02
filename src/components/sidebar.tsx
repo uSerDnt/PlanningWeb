@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { DottedSeparator } from './dotted-separator';
 import { Navigation } from './navigation';
+import { WorkspaceSwitcher } from './workspace-switcher';
 
 export const Sidebar = () => {
   return (
@@ -16,6 +17,8 @@ export const Sidebar = () => {
           className="rounded-full"
         />
       </Link>
+      <DottedSeparator className="py-4" />
+      <WorkspaceSwitcher />
       <DottedSeparator className="py-4" />
       <Navigation />
     </aside>

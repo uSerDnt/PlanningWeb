@@ -42,7 +42,18 @@ export const CreateWorkspaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
   });
 
   const onSubmit = (values: z.infer<typeof createWorkspaceSchema>) => {
-    mutate({ json: values });
+    const finalValues = {
+      ...values,
+      image: values.image instanceof File ? values.image : '',
+    };
+    mutate(
+      { form: finalValues },
+      {
+        onSuccess: () => {
+          form.reset();
+        },
+      }
+    );
   };
 
   const handleChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,7 +64,7 @@ export const CreateWorkspaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
   };
 
   return (
-    <Card className="size-full border-none shadow-none">
+    <Card className="size-full shadow-none">
       <CardHeader className="flex p-7">
         <CardTitle className="text-xl font-bold">
           Create new workspace
