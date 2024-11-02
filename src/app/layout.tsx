@@ -5,7 +5,6 @@ import { LanguageProvider } from '@inlang/paraglide-next';
 import type { Metadata } from 'next';
 
 import { Footer } from '@/components/footer';
-import { Navbar } from '@/components/navbar/navbar';
 import { QueryProvider } from '@/components/query-provider';
 import { ThemeProvider } from '@/components/theme-provider';
 import { ThemeSwitcher } from '@/components/theme-switcher';
@@ -56,7 +55,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
         <body className={cn('min-h-screen font-sans', fonts)}>
           <QueryProvider>
             <ThemeProvider attribute="class">
-              <Navbar />
+              {/* <Navbar /> */}
               {children}
               <ThemeSwitcher className="absolute bottom-5 right-5 z-10" />
               <Footer />
