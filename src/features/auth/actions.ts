@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { Account, Client } from 'node-appwrite';
 
-import { AUTH_COOKIE } from '../contants';
+import { AUTH_COOKIE } from './contants';
 
 import { env } from '@/env.mjs';
 
