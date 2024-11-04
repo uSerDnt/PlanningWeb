@@ -25,6 +25,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 
 interface CreateWorkspaceFormProps {
   onCancel?: () => void;
@@ -154,6 +155,7 @@ export const CreateWorkspaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
                 size={'lg'}
                 onClick={onCancel}
                 disabled={isPending}
+                className={cn(!onCancel && 'invisible')}
               >
                 Cancel
               </Button>
