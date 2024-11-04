@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { cookies } from 'next/headers';
 import { Account, Client, Databases } from 'node-appwrite';
 
