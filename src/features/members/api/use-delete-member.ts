@@ -5,41 +5,40 @@ import { useToast } from '@/components/ui/use-toast';
 import { client } from '@/lib/rpc';
 
 type ResponseType = InferResponseType<
-  (typeof client.api.workspaces)[':workspaceId']['$patch'],
+  (typeof client.api.members)[':memberId']['$delete'],
   200
 >;
 type RequestType = InferRequestType<
-  (typeof client.api.workspaces)[':workspaceId']['$patch']
+  (typeof client.api.members)[':memberId']['$delete']
 >;
 
-export const useUpdateWorkspace = () => {
+export const useDeleteMember = () => {
   const queryClient = useQueryClient();
 
   const { toast } = useToast();
 
   const mutation = useMutation<ResponseType, Error, RequestType>({
-    mutationFn: async ({ form, param }) => {
-      const response = await client.api.workspaces[':workspaceId']['$patch']({
-        form,
+    mutationFn: async ({ param }) => {
+      const response = await client.api.members[':memberId']['$delete']({
         param,
       });
 
       if (!response.ok) {
-        throw new Error('Failed to update workspace');
+        throw new Error('Failed to delete member');
       }
 
       return await response.json();
     },
     onSuccess: ({ data }) => {
       toast({
-        description: 'Workspace updated successfully',
+        description: 'Member deleded successfully',
       });
       queryClient.invalidateQueries({ queryKey: ['workspaces'] });
       queryClient.invalidateQueries({ queryKey: ['workspace', data.$id] });
     },
     onError: () => {
       toast({
-        description: 'Faild to create workspace',
+        description: 'Faild to deleded workspace',
         variant: 'destructive',
       });
     },
