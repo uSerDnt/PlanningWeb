@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { z } from 'zod';
 
+import { useDeleteWorkspace } from '../api/use-delete-workspace';
 import { useUpdateWorkspace } from '../api/use-update-worksapce';
 import { updateWorkspaceSchema } from '../schemas';
 import { Workspace } from '../type';
@@ -26,6 +27,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useConfirm } from '@/hooks/use-confirm';
 import { cn } from '@/lib/utils';
 
 interface EditWorkspaceFormProps {
@@ -38,7 +40,16 @@ export const EditWorkspaceForm = ({
   initialValues,
 }: EditWorkspaceFormProps) => {
   const { mutate, isPending } = useUpdateWorkspace();
+  const { mutate: deleteWorkspace, isPending: isDeleteWorkspace } =
+    useDeleteWorkspace();
+
   const router = useRouter();
+
+  const [DeleteDialog, confirmDelete] = useConfirm(
+    'Delete workspace',
+    'Are you sure you want to delete this workspace?',
+    'destructive'
+  );
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -49,6 +60,21 @@ export const EditWorkspaceForm = ({
       image: initialValues.imageUrl ?? '',
     },
   });
+
+  const handleDelete = async () => {
+    const ok = await confirmDelete();
+
+    if (!ok) return;
+
+    deleteWorkspace(
+      { param: { workspaceId: initialValues.$id } },
+      {
+        onSuccess: () => {
+          window.location.href = '/';
+        },
+      }
+    );
+  };
 
   const onSubmit = (values: z.infer<typeof updateWorkspaceSchema>) => {
     const finalValues = {
@@ -75,6 +101,7 @@ export const EditWorkspaceForm = ({
 
   return (
     <div className="flex flex-col gap-y-4">
+      <DeleteDialog />
       <Card className="size-full border-none shadow-none">
         <CardHeader className="flex flex-row items-center gap-x-4 space-y-0 p-7">
           <Button
@@ -214,10 +241,11 @@ export const EditWorkspaceForm = ({
               certain.
             </p>
             <Button
-              disabled={isPending}
+              disabled={isPending || isDeleteWorkspace}
               className="ml-auto mt-6 w-fit"
               size="sm"
               variant={'destructive'}
+              onClick={handleDelete}
             >
               Delete worksapce
             </Button>
