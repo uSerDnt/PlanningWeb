@@ -14,6 +14,7 @@ export const env = createEnv({
     NEXT_PUBLIC_APPWRITE_DATABASE_ID: z.string().min(1),
     NEXT_PUBLIC_APPWRITE_WORKSPACES_ID: z.string().min(1),
     NEXT_PUBLIC_APPWRITE_MEMBERS_ID: z.string().min(1),
+    NEXT_PUBLIC_APPWRITE_PROJECTS_ID: z.string().min(1),
     NEXT_PUBLIC_APPWRITE_IMAGES_BUCKET_ID: z.string().min(1),
     NEXT_APPWRITE_KEY: z.string().min(1),
   },
@@ -38,6 +39,8 @@ export const env = createEnv({
       process.env.NEXT_PUBLIC_APPWRITE_IMAGES_BUCKET_ID,
     NEXT_PUBLIC_APPWRITE_MEMBERS_ID:
       process.env.NEXT_PUBLIC_APPWRITE_MEMBERS_ID,
+    NEXT_PUBLIC_APPWRITE_PROJECTS_ID:
+      process.env.NEXT_PUBLIC_APPWRITE_PROJECTS_ID,
     NEXT_APPWRITE_KEY: process.env.NEXT_APPWRITE_KEY,
   },
 });
