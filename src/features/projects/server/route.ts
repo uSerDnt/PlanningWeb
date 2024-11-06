@@ -3,7 +3,7 @@ import { Hono } from 'hono';
 import { ID, Query } from 'node-appwrite';
 import { z } from 'zod';
 
-import { createProjectSchema } from '../schema';
+import { createProjectSchema } from '../schemas';
 
 import { getMember } from '@/features/members/utils';
 import { DATABASE_ID, IMAGES_BUCKET_ID, PROJECTS_ID } from '@/lib/config';
@@ -54,7 +54,6 @@ const app = new Hono()
         ID.unique(),
         {
           name,
-          userId: user.$id,
           imageUrl: uploadedImageUrl,
           workspaceId,
         }

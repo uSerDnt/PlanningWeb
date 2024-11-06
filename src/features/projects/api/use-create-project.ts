@@ -4,7 +4,10 @@ import { InferRequestType, InferResponseType } from 'hono';
 import { useToast } from '@/components/ui/use-toast';
 import { client } from '@/lib/rpc';
 
-type ResponseType = InferResponseType<(typeof client.api.projects)['$post']>;
+type ResponseType = InferResponseType<
+  (typeof client.api.projects)['$post'],
+  200
+>;
 type RequestType = InferRequestType<(typeof client.api.projects)['$post']>;
 
 export const useCreateProject = () => {
@@ -26,7 +29,7 @@ export const useCreateProject = () => {
       toast({
         description: 'Project created successfully',
       });
-      queryClient.invalidateQueries({ queryKey: ['workspaces'] });
+      queryClient.invalidateQueries({ queryKey: ['projects'] });
     },
     onError: () => {
       toast({

@@ -5,19 +5,25 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { useGetProjects } from '@/features/projects/api/use-get-projects';
+import { ProjectAvatar } from '@/features/projects/components/project-avatar';
+import { useCreateProjectModal } from '@/features/projects/hooks/use-create-project-modal';
 import { useWorkspaceId } from '@/features/workspaces/hooks/use-workspace-id';
 import { cn } from '@/lib/utils';
 
 export const Projects = () => {
   const workspaceId = useWorkspaceId();
   const { data } = useGetProjects({ workspaceId });
+  const { open } = useCreateProjectModal();
 
   const pathname = usePathname();
   return (
     <div className="flex flex-col gap-y-2">
       <div className="flex items-center justify-between">
         <p className="text-xs uppercase text-neutral-500">Workspace</p>
-        <RiAddCircleFill className="size-5 cursor-pointer text-neutral-500 transition hover:opacity-75" />
+        <RiAddCircleFill
+          onClick={open}
+          className="size-5 cursor-pointer text-neutral-500 transition hover:opacity-75"
+        />
       </div>
       {data?.documents.map((project) => {
         const href = `/workspaces/${workspaceId}/projects/${project.$id}`;
@@ -31,6 +37,7 @@ export const Projects = () => {
                 isActive && 'text-primary bg-white shadow-sm hover:opacity-100'
               )}
             >
+              <ProjectAvatar image={project.imageUrl} name={project.name} />
               <span className="truncate">{project.name}</span>
             </div>
           </Link>
