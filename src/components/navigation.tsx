@@ -33,7 +33,7 @@ const routes = [
     activeIcon: SettingsIcon,
   },
   {
-    label: 'Memebrs',
+    label: 'Members',
     href: '/members',
     icon: UsersIcon,
     activeIcon: UsersIcon,
