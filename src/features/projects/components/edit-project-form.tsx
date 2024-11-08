@@ -249,7 +249,7 @@ export const EditProjectForm = ({
               variant={'destructive'}
               onClick={handleDelete}
             >
-              Delete worksapce
+              Delete project
             </Button>
           </div>
         </CardContent>
