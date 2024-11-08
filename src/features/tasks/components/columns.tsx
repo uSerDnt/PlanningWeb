@@ -4,7 +4,7 @@ import { ColumnDef } from '@tanstack/react-table';
 import { ArrowUpDown, MoreVertical } from 'lucide-react';
 
 import { Task } from '../type';
-import { TaskAction } from './task-action';
+import { TaskActions } from './task-actions';
 import { TaskDate } from './task-date';
 
 import { Badge } from '@/components/ui/badge';
@@ -133,11 +133,11 @@ export const columns: ColumnDef<Task>[] = [
       const id = row.original.$id;
       const projectId = row.original.project.$id;
       return (
-        <TaskAction id={id} projectId={projectId}>
+        <TaskActions id={id} projectId={projectId}>
           <Button variant="ghost" className="size-8 p-0">
             <MoreVertical className="size-4" />
           </Button>
-        </TaskAction>
+        </TaskActions>
       );
     },
   },

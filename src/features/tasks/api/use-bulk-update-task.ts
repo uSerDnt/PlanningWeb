@@ -5,23 +5,22 @@ import { useToast } from '@/components/ui/use-toast';
 import { client } from '@/lib/rpc';
 
 type ResponseType = InferResponseType<
-  (typeof client.api.tasks)[':taskId']['$patch'],
+  (typeof client.api.tasks)['bulk-update']['$post'],
   200
 >;
 type RequestType = InferRequestType<
-  (typeof client.api.tasks)[':taskId']['$patch']
+  (typeof client.api.tasks)['bulk-update']['$post']
 >;
 
-export const useUpdateTask = () => {
+export const useBulkUpdateTask = () => {
   const queryClient = useQueryClient();
 
   const { toast } = useToast();
 
   const mutation = useMutation<ResponseType, Error, RequestType>({
-    mutationFn: async ({ json, param }) => {
-      const response = await client.api.tasks[':taskId']['$patch']({
+    mutationFn: async ({ json }) => {
+      const response = await client.api.tasks['bulk-update']['$post']({
         json,
-        param,
       });
 
       if (!response.ok) {
@@ -30,12 +29,11 @@ export const useUpdateTask = () => {
 
       return await response.json();
     },
-    onSuccess: ({ data }) => {
+    onSuccess: () => {
       toast({
-        description: 'task updated successfully',
+        description: 'task updated',
       });
       queryClient.invalidateQueries({ queryKey: ['tasks'] });
-      queryClient.invalidateQueries({ queryKey: ['tasks', data.$id] });
     },
     onError: () => {
       toast({

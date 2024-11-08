@@ -13,13 +13,13 @@ import {
 import { useWorkspaceId } from '@/features/workspaces/hooks/use-workspace-id';
 import { useConfirm } from '@/hooks/use-confirm';
 
-interface TaskActionProps {
+interface TaskActionsProps {
   id: string;
   projectId: string;
   children: React.ReactNode;
 }
 
-export const TaskAction = ({ id, projectId, children }: TaskActionProps) => {
+export const TaskActions = ({ id, projectId, children }: TaskActionsProps) => {
   const workspaceId = useWorkspaceId();
   const router = useRouter();
 
