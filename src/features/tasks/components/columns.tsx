@@ -1,9 +1,10 @@
 'use client';
 
 import { ColumnDef } from '@tanstack/react-table';
-import { ArrowUpDown } from 'lucide-react';
+import { ArrowUpDown, MoreVertical } from 'lucide-react';
 
 import { Task } from '../type';
+import { TaskAction } from './task-action';
 import { TaskDate } from './task-date';
 
 import { Badge } from '@/components/ui/badge';
@@ -124,6 +125,20 @@ export const columns: ColumnDef<Task>[] = [
       const status = row.original.status;
 
       return <Badge variant={status}>{snakeCaseToTitleCase(status)}</Badge>;
+    },
+  },
+  {
+    id: 'actions',
+    cell: ({ row }) => {
+      const id = row.original.$id;
+      const projectId = row.original.project.$id;
+      return (
+        <TaskAction id={id} projectId={projectId}>
+          <Button variant="ghost" className="size-8 p-0">
+            <MoreVertical className="size-4" />
+          </Button>
+        </TaskAction>
+      );
     },
   },
 ];
