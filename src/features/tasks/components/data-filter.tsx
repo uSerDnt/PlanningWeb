@@ -45,7 +45,7 @@ export const DataFilters = ({ hideProjectFilter }: DataFiltersProps) => {
   const [{ projectId, status, assigneeId, search, dueDate }, setFilter] =
     useTaskFilters();
   console.log('search', search);
-  console.log('hideProjectFilter', hideProjectFilter);
+
   const onStatusChange = (value: TaskStatus | 'all') => {
     setFilter({
       status: value === 'all' ? null : value,
