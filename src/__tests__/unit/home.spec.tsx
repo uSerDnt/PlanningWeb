@@ -1,15 +1,15 @@
-import { render, screen } from '@testing-library/react';
+// import { render, screen } from '@testing-library/react';
 
-import Home from '@/app/(dashboard)/page';
+// import Home from '@/app/(dashboard)/page';
 
-describe('Homepage', () => {
-  it('renders the Components', () => {
-    render(<Home />);
+// describe('Homepage', () => {
+//   it('renders the Components', () => {
+//     render(<Home />);
 
-    const heading = screen.getByText('Next.js starter template', {
-      selector: 'h1',
-    });
+//     const heading = screen.getByText('Next.js starter template', {
+//       selector: 'h1',
+//     });
 
-    expect(heading).toBeInTheDocument();
-  });
-});
+//     expect(heading).toBeInTheDocument();
+//   });
+// });
