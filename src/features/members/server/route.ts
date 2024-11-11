@@ -3,7 +3,7 @@ import { Hono } from 'hono';
 import { Query } from 'node-appwrite';
 import { z } from 'zod';
 
-import { MemberRole } from '../type';
+import { Member, MemberRole } from '../type';
 import { getMember } from '../utils';
 
 import { createAdminClient } from '@/lib/appwrite';
@@ -37,9 +37,11 @@ const app = new Hono()
         return c.json({ error: 'Unauthorized' }, 401);
       }
 
-      const members = await databases.listDocuments(DATABASE_ID, MEMBERS_ID, [
-        Query.equal('workspaceId', workspaceId),
-      ]);
+      const members = await databases.listDocuments<Member>(
+        DATABASE_ID,
+        MEMBERS_ID,
+        [Query.equal('workspaceId', workspaceId)]
+      );
 
       const populatedMembers = await Promise.all(
         members.documents.map(async (member) => {
