@@ -46,7 +46,7 @@ const UserButton = () => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="w-60 rounded-sm border bg-white shadow-lg"
+        className="z-10 w-60 rounded-sm border bg-white shadow-lg"
         align="end"
         side="bottom"
         // sideOffset={10}
