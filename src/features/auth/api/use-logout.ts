@@ -22,12 +22,12 @@ export const useLogout = () => {
       return await response.json();
     },
     onSuccess: () => {
-      router.refresh();
-      queryClient.invalidateQueries({ queryKey: ['current'] });
-      queryClient.invalidateQueries({ queryKey: ['workspaces'] });
       toast({
         description: 'Logged out successfully',
       });
+
+      router.refresh();
+      queryClient.invalidateQueries();
     },
     onError: () => {
       toast({

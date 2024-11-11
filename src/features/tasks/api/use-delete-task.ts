@@ -31,7 +31,8 @@ export const useDeleteTask = () => {
       toast({
         description: 'task deleted successfully',
       });
-
+      queryClient.invalidateQueries({ queryKey: ['project-analytics'] });
+      queryClient.invalidateQueries({ queryKey: ['workspace-analytics'] });
       queryClient.invalidateQueries({ queryKey: ['tasks'] });
       queryClient.invalidateQueries({ queryKey: ['tasks', data.$id] });
     },
