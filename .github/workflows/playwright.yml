@@ -4,7 +4,7 @@ on:
     branches:
       - main
       - master
-      - develop
+      # - develop
   pull_request: null
   workflow_dispatch: null
 
@@ -17,13 +17,13 @@ jobs:
       - uses: actions/setup-node@v3
       - name: Install dependencies
         run: npm i
-      # - name: Install playwright browsers
-      #   run: npx playwright install --with-deps
-      # - name: Run tests
-      #   run: npm run e2e
-      # - uses: actions/upload-artifact@v3
-      #   if: always()
-      #   with:
-      #     name: playwright-report
-      #     path: playwright-report/
-      #     retention-days: 30
+      - name: Install playwright browsers
+        run: npx playwright install --with-deps
+      - name: Run tests
+        run: npm run e2e
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
