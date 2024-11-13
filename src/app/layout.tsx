@@ -27,9 +27,6 @@ export const generateMetadata = (): Metadata => ({
     shortcut: '/logo.png',
     apple: '/logo.png',
   },
-  verification: {
-    google: siteConfig.googleSiteVerificationId(),
-  },
   openGraph: {
     url: siteConfig.url(),
     title: siteConfig.title(),
