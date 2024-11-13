@@ -21,7 +21,7 @@
     "meta_keyword_next_auth": "Next-auth",
     "meta_keyword_prisma": "Prisma",
     "project_management_tool_headline": "Project Management Tool",
-    "project_management_tool_description": "A comprehensive project management tool similar to Jira, featuring TypeScript, Tailwind CSS, Next-auth, Eslint, Stripe, Paraglide, and more. Streamline your project management with ease.",
+    "project_management_tool_description": "A comprehensive project management tool similar to Jira, featuring TypeScript, Tailwind CSS, Next-auth, Eslint, Paraglide, and more. Streamline your project management with ease.",
     "get_started": "Get Started",
     "github": "GitHub"
 }

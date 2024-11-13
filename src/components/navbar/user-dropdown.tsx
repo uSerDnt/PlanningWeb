@@ -1,12 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 import { Session } from 'next-auth';
 import { signOut } from 'next-auth/react';
 
 import { Icons } from '@/components/icons';
-import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,11 +16,11 @@ import {
 import * as m from '@/paraglide/messages';
 
 export const UserDropdown = ({ session: { user } }: { session: Session }) => {
-  const [isPending, setIsPending] = useState(false);
+  // const [isPending, setIsPending] = useState(false);
 
-  const handleCreateCheckoutSession = async () => {
-    setIsPending(true);
-  };
+  // const handleCreateCheckoutSession = async () => {
+  //   setIsPending(true);
+  // };
 
   return (
     <DropdownMenu>
@@ -47,7 +45,7 @@ export const UserDropdown = ({ session: { user } }: { session: Session }) => {
             height={100}
           />
           <h2 className="py-2 text-lg font-bold">{user?.name}</h2>
-          <Button
+          {/* <Button
             onClick={handleCreateCheckoutSession}
             disabled={user?.isActive || isPending}
             className="w-64"
@@ -62,7 +60,7 @@ export const UserDropdown = ({ session: { user } }: { session: Session }) => {
                 {m.upgrade_to_pro_cta()}
               </>
             )}
-          </Button>
+          </Button> */}
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => signOut()}>

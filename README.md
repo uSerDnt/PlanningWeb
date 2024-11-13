@@ -1,4 +1,4 @@
-*<a href="https://planningdev.vercel.app/">
+<a href="https://planningdev.vercel.app/">
 <!-- <img src="https://github.com/Skolaczk/next-starter/assets/76774237/44b552ff-43aa-441f-b1d0-de9bdfc2a73f" alt="thubnail"> -->
 </a>
 <p align="center">
@@ -16,7 +16,6 @@
 - 📘 Typescript
 - 🎨 TailwindCSS - Class sorting, merging and linting
 - 🛠️ Shadcn/ui - Customizable UI components
-- 💵 Stripe - Payment handler
 - 🔒 Next-auth - Easy authentication library for Next.js (GitHub provider)
 - 🛡️ Prisma - ORM for node.js
 - 📋 React-hook-form - Manage your forms easy and efficient 

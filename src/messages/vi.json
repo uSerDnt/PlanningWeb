@@ -21,7 +21,7 @@
   "meta_keyword_next_auth": "Next-auth",
   "meta_keyword_prisma": "Prisma",
   "project_management_tool_headline": "Công cụ quản lý dự án",
-  "project_management_tool_description": "Một công cụ quản lý dự án toàn diện tương tự như Jira, có TypeScript, Tailwind CSS, Next-auth, Eslint, Stripe, Paraglide và nhiều hơn nữa. Đơn giản hóa quản lý dự án của bạn một cách dễ dàng.",
+  "project_management_tool_description": "Một công cụ quản lý dự án toàn diện tương tự như Jira, có TypeScript, Tailwind CSS, Next-auth, Eslint, Paraglide và nhiều hơn nữa. Đơn giản hóa quản lý dự án của bạn một cách dễ dàng.",
   "get_started": "Bắt đầu",
   "github": "GitHub"
 }
